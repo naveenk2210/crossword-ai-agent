@@ -47,7 +47,7 @@ Constraint Validation
    |
    v
 Updated Grid
-'''
+```
 
 ## Key Components
 agent.py - communicates with Nebius Token Factory and generates candidate answers.
@@ -81,7 +81,7 @@ NEBIUS_MODEL=zai-org/GLM-5.3-Flash
 
 The .env file is excluded from Git.
 
-## Run
+Run
 
 Run the default sample puzzle:
 
@@ -105,7 +105,8 @@ As crossing letters are discovered, later clues become more constrained:
 Pattern: A___
 Candidates: ['AREA']
 Accepted: AREA
-Tests
+
+## Tests
 
 Run:
 
@@ -117,9 +118,10 @@ Across/Down intersections
 valid crossing answers
 conflicting crossing rejection
 incorrect answer-length rejection
-Evaluation Methodology
 
-## The agent is evaluated using:
+## Evaluation Methodology
+
+The agent is evaluated using:
 
 Clue accuracy - percentage of Across/Down clues solved correctly.
 Letter accuracy - percentage of crossword cells containing the correct letter.
