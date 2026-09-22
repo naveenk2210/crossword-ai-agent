@@ -47,7 +47,9 @@ Constraint Validation
    |
    v
 Updated Grid
-Key Components
+'''
+
+## Key Components
 agent.py - communicates with Nebius Token Factory and generates candidate answers.
 crossword.py - represents the crossword grid, clues, positions, patterns, and intersections.
 solver.py - controls the iterative solving and retry loop.
@@ -55,10 +57,12 @@ evaluator.py - calculates solution-quality and efficiency metrics.
 app.py - command-line entry point.
 data/ - sample puzzles and separate answer keys.
 tests/ - deterministic crossword constraint tests.
-Requirements
+
+## Requirements
 Python 3.12+
 Nebius Token Factory API key
-Installation
+
+## Installation
 
 Create and activate a virtual environment:
 
@@ -77,7 +81,7 @@ NEBIUS_MODEL=zai-org/GLM-5.3-Flash
 
 The .env file is excluded from Git.
 
-Run
+## Run
 
 Run the default sample puzzle:
 
@@ -115,7 +119,7 @@ conflicting crossing rejection
 incorrect answer-length rejection
 Evaluation Methodology
 
-The agent is evaluated using:
+## The agent is evaluated using:
 
 Clue accuracy - percentage of Across/Down clues solved correctly.
 Letter accuracy - percentage of crossword cells containing the correct letter.
@@ -126,7 +130,7 @@ Solve time - end-to-end solving latency.
 
 The answer key is stored separately from the puzzle input so that the solver cannot use the correct answers during inference.
 
-Initial Evaluation Results
+## Initial Evaluation Results
 
 Three controlled 4x4 puzzles were evaluated.
 
@@ -144,7 +148,7 @@ Average solve time was approximately 18.6 seconds.
 
 These are small synthetic evaluation puzzles and should not be interpreted as performance on arbitrary newspaper-scale crosswords.
 
-Design Decisions
+## Design Decisions
 LLM reasoning + deterministic constraints
 
 The LLM is responsible for semantic clue solving, while Python code enforces structural crossword constraints.
@@ -166,12 +170,13 @@ Separate evaluation data
 
 Correct solutions are stored separately from puzzle inputs. This avoids leaking answers into the solving process.
 
-Current Limitations
+## Current Limitations
 The current implementation does not perform full search-tree backtracking when an early valid-looking answer later causes conflicts.
 The initial evaluation set contains small synthetic 4x4 puzzles.
 LLM responses are nondeterministic, so API-call count and latency may vary between runs.
 More complex crossword conventions, rebus cells, themes, and multi-word normalization are not yet handled.
-Possible Improvements
+
+## Possible Improvements
 Add backtracking and candidate scoring.
 Evaluate against larger real-world crossword datasets.
 Add confidence scores for candidate answers.
